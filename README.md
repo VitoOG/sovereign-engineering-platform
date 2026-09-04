@@ -1,5 +1,5 @@
 # sovereign-engineering-platform
-A local-first engineering platform for cyber-physical systems, sovereign edge infrastructure, deterministic control, and local AI.
+Engineering systems that operate in the real world.
 
 
 WHERE WE ARE GOING
