@@ -4,14 +4,13 @@ Engineering systems that operate in the real world.
 
 This repository is an engineering architecture and evidence framework for cyber-physical systems, sovereign infrastructure, deterministic control, local AI, observability, and engineering evolution. It is a specification and evidence structure, not a deployed product, and not a marketing portfolio.
 
-## Positioning
+## Viktors Simonenko
 
-Viktors Simonenko
-Senior Systems Architect / Engineering
+ Systems Architect | Integrator | Engineering
 
 Specialization areas include systems architecture, cyber-physical systems, embedded and edge engineering, networking, security architecture, local AI, agentic workflows, observability, reliability, and infrastructure.
 
-Core message:
+##
 
 I engineer systems where hardware, software, networks, control logic, data, security, and intelligence operate as one coherent system.
 
