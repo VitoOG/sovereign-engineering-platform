@@ -15,38 +15,6 @@ Core message:
 
 I engineer systems where hardware, software, networks, control logic, data, security, and intelligence operate as one coherent system.
 
-## Canonical Pipeline
-
-
-```mermaid
-flowchart TD
-    A[PHYSICAL WORLD] --> B[SENSORS]
-    B --> C[ACQUISITION]
-    C --> D[VALIDATION]
-    D --> E[STATE ESTIMATION]
-    E --> F[DETERMINISTIC CONTROL]
-    F --> G[ACTUATION]
-    G --> A
-    E -.telemetry.-> H[OBSERVATORY / KNOWLEDGE]
-    F -.telemetry.-> H
-    H --> I[LOCAL AI / RECOMMENDATION]
-    I --> J[POLICY VALIDATION]
-    J --> F
-```
-
-## Architectural Philosophy
-
-- Local-first
-- Deterministic
-- Failure-first
-- Recoverable
-- Security-by-design
-- Evidence-driven
-- Physics-aware
-- Systems-thinking
-
-## Final Portfolio Message
-
 This is not a collection of scripts, and it is not a claim of deployed capability.
 
 It is an engineering specification and evidence framework for understanding, designing, and — once implemented and measured — operating, observing, and evolving real-world systems.
