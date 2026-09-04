@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sovereign-engineering-platform/schemas/command.schema.json",
+  "title": "Command",
+  "description": "DESIGN-level schema. Represents a requested or approved Command per architecture/security/AI_AUTHORITY_CONTRACT.md. No executor implementation exists yet.",
+  "type": "object",
+  "required": ["commandId", "actor", "capability", "requestedAction", "policyDecision"],
+  "properties": {
+    "commandId": {
+      "type": "string",
+      "description": "Unique identifier for this command instance."
+    },
+    "actor": {
+      "type": "object",
+      "required": ["type", "identifier"],
+      "properties": {
+        "type": { "type": "string", "enum": ["HUMAN", "AI", "AGENT", "ROBOT"] },
+        "identifier": { "type": "string" }
+      }
+    },
+    "capability": {
+      "type": "string",
+      "description": "Capability identifier being invoked."
+    },
+    "requestedAction": {
+      "type": "object",
+      "description": "Parameterized description of the intended effect. Fields are capability-specific and not enumerated here.",
+      "additionalProperties": true
+    },
+    "policyId": {
+      "type": "string",
+      "description": "Reference to the Policy evaluated for this command."
+    },
+    "policyDecision": {
+      "type": "string",
+      "enum": ["ALLOW", "DENY", "REQUIRE_APPROVAL"]
+    },
+    "approval": {
+      "type": "object",
+      "description": "Populated only when policyDecision is REQUIRE_APPROVAL and a human has responded.",
+      "properties": {
+        "approvedBy": { "type": "string" },
+        "approvedAt": { "type": "string", "format": "date-time" },
+        "outcome": { "type": "string", "enum": ["APPROVED", "DENIED"] }
+      }
+    },
+    "executor": {
+      "type": "string",
+      "description": "Identifier of the Deterministic Executor responsible for carrying out this command, if ALLOW/APPROVED."
+    },
+    "issuedAt": { "type": "string", "format": "date-time" },
+    "provenance": { "$ref": "policy.schema.json#/definitions/provenance" }
+  }
+}

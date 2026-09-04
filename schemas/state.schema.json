@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sovereign-engineering-platform/schemas/state.schema.json",
+  "title": "State",
+  "description": "DESIGN-level schema. Represents State or State Estimate per docs/foundations/TERMINOLOGY.md. No implementation exists yet.",
+  "type": "object",
+  "required": ["stateId", "owner", "kind", "value", "timestamp"],
+  "properties": {
+    "stateId": {
+      "type": "string",
+      "description": "Unique identifier for this state record."
+    },
+    "owner": {
+      "type": "string",
+      "description": "The single owning component/layer for this state, per architecture/LAYER_CONTRACTS.md."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["STATE", "STATE_ESTIMATE"],
+      "description": "Distinguishes authoritative State from a computed State Estimate."
+    },
+    "value": {
+      "type": "object",
+      "description": "Domain-specific state representation. No physical values are prescribed here.",
+      "additionalProperties": true
+    },
+    "derivedFrom": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Telemetry or state IDs this value was derived from, required when kind is STATE_ESTIMATE."
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "provenance": { "$ref": "policy.schema.json#/definitions/provenance" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "STATE_ESTIMATE" } } },
+      "then": { "required": ["derivedFrom"] }
+    }
+  ]
+}

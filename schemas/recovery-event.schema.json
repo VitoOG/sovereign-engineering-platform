@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sovereign-engineering-platform/schemas/recovery-event.schema.json",
+  "title": "RecoveryEvent",
+  "description": "DESIGN-level schema. Represents a recovery-event record per architecture/reliability/FAILURE_AND_RECOVERY_MODEL.md. No concrete safe-state values or timeouts are prescribed here.",
+  "type": "object",
+  "required": ["recoveryEventId", "failureClass", "affectedLayer", "detectionSource", "stage", "timestamp"],
+  "properties": {
+    "recoveryEventId": {
+      "type": "string",
+      "description": "Unique identifier for this recovery event."
+    },
+    "failureClass": {
+      "type": "string",
+      "description": "Category of failure, as enumerated in FAILURE_AND_RECOVERY_MODEL.md."
+    },
+    "affectedLayer": {
+      "type": "string",
+      "enum": ["L0", "L1", "L2", "L3", "L4", "L5", "L6"]
+    },
+    "detectionSource": {
+      "type": "string",
+      "description": "Component that detected the failure (e.g., Watchdog, Deterministic Control)."
+    },
+    "stage": {
+      "type": "string",
+      "enum": ["DETECT", "ISOLATE", "DEGRADE", "RECOVER", "VERIFY"],
+      "description": "Current stage of the recovery workflow for this event."
+    },
+    "containment": {
+      "type": "string",
+      "description": "Description of isolation/containment action taken, if any."
+    },
+    "safeState": {
+      "type": "string",
+      "description": "Reference to the applicable safe-state definition. Use [UNRESOLVED_SPEC: Requires Hardware/Code Verification] if not yet defined for this failure class."
+    },
+    "escalationOwner": {
+      "type": "string",
+      "description": "Actor or role responsible for escalation if automatic recovery does not succeed."
+    },
+    "recoveryAction": {
+      "type": "string",
+      "description": "Action taken during RECOVER stage, if reached."
+    },
+    "timeoutSeconds": {
+      "type": ["number", "null"],
+      "description": "Maximum time allowed for this stage before escalation. Null if undefined. Do not fabricate a value."
+    },
+    "rollbackCondition": {
+      "type": "string",
+      "description": "Condition under which this recovery is rolled back rather than completed."
+    },
+    "verificationCondition": {
+      "type": "string",
+      "description": "Condition that must hold true for VERIFY stage to pass."
+    },
+    "evidenceEmitted": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Evidence record IDs produced by this recovery event."
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "provenance": { "$ref": "policy.schema.json#/definitions/provenance" }
+  }
+}

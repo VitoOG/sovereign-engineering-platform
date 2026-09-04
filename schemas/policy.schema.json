@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sovereign-engineering-platform/schemas/policy.schema.json",
+  "title": "Policy",
+  "description": "DESIGN-level schema. No enforcement implementation exists yet. See architecture/security/AI_AUTHORITY_CONTRACT.md.",
+  "type": "object",
+  "required": ["policyId", "version", "actorScope", "capability", "rule", "decisionOptions"],
+  "properties": {
+    "policyId": {
+      "type": "string",
+      "description": "Unique identifier for this policy definition."
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of this policy."
+    },
+    "actorScope": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["HUMAN", "AI", "AGENT", "ROBOT"] },
+      "description": "Actor types this policy applies to."
+    },
+    "capability": {
+      "type": "string",
+      "description": "Capability identifier this policy governs (see docs/ai/CAPABILITY_SYSTEM.md)."
+    },
+    "rule": {
+      "type": "object",
+      "required": ["conditions"],
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Human-readable or engine-specific condition expressions. No concrete evaluation engine is specified yet."
+        }
+      }
+    },
+    "decisionOptions": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["ALLOW", "DENY", "REQUIRE_APPROVAL"] },
+      "description": "Permitted policy decision outcomes for this policy."
+    },
+    "provenance": {
+      "$ref": "#/definitions/provenance"
+    }
+  },
+  "definitions": {
+    "provenance": {
+      "type": "object",
+      "required": ["author", "createdAt"],
+      "properties": {
+        "author": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "supersedes": { "type": "string" }
+      }
+    }
+  }
+}
