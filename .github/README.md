@@ -12,7 +12,7 @@ Specialization areas include systems architecture, cyber-physical systems, embed
 
 ##
 
-I engineer systems where hardware, software, networks, control logic, data, security, and intelligence operate as one coherent system.
+I Design and Deploy systems where hardware, software, networks, control logic, data, security, and intelligence operate as one coherent system.
 
 This is not a collection of scripts, and it is not a claim of deployed capability.
 
