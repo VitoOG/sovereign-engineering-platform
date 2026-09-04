@@ -12,7 +12,7 @@ Physical Reality → Sensors → Telemetry → Explicit State → Deterministic 
 
 At the lowest level are real devices: microcontrollers, sensors, actuators, power systems, climate, water, lighting, and industrial equipment. Critical functions remain local, deterministic, and independent of cloud connectivity or nondeterministic AI.
 
-Above this is the Edge Layer: Linux, Raspberry Pi, local services, telemetry, supervision, recovery, and EricaOS. Its purpose is to maintain system state, coordinate edge components, and keep critical operation autonomous.
+Above this is the Edge Layer: Linux, Raspberry Pi, local services, telemetry, supervision, recovery. Its purpose is to maintain system state, coordinate edge components, and keep critical operation autonomous.
 
 The Sovereign Network Layer provides controlled connectivity through WireGuard, Headscale/Tailscale, segmentation, and restricted management paths.
 
