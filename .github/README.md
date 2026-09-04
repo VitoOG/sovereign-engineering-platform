@@ -17,7 +17,6 @@ I engineer systems where hardware, software, networks, control logic, data, secu
 
 ## Canonical Pipeline
 
-Authoritative version with telemetry taxonomy and feedback flow: [architecture/cps/CPS_CONTROL_LOOP.md](architecture/cps/CPS_CONTROL_LOOP.md). Summary only:
 
 ```mermaid
 flowchart TD
