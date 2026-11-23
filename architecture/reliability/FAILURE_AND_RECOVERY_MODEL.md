@@ -58,3 +58,50 @@ stateDiagram-v2
 - Recovery is distinct from Deployment rollback; see [docs/foundations/TERMINOLOGY.md](../../docs/foundations/TERMINOLOGY.md).
 - Layer-specific recovery responsibility is defined in [architecture/LAYER_CONTRACTS.md](../LAYER_CONTRACTS.md).
 - Recovery events must be traceable per [architecture/TRACEABILITY.md](../TRACEABILITY.md).
+
+
+## Transactional Engineering Change and Migration (Design Pattern)
+
+Engineering changes that alter files, configuration, services, or system state must be treated as bounded transactions rather than as unstructured sequences of commands. This section records a general change-control pattern derived from recent engineering workflow discussions; it does not claim that a universal migration engine or automated transaction framework exists.
+
+### Required sequence
+
+`PRECHECK → INVENTORY → BACKUP / RECOVERY POINT → STAGE → APPLY → INTEGRITY VERIFY → POST-CHANGE VERIFY → COMMIT`
+
+A failed verification must prevent commit. The workflow must preserve a known-good state and define a recovery path before destructive or difficult-to-reverse operations begin.
+
+### Preconditions and invariants
+
+- Establish the current state before mutation: repository/worktree state, target existence, relevant metadata, dependencies, and expected ownership.
+- Define the intended target state and explicit success criteria.
+- Preserve a recoverable baseline before changing state.
+- Prefer atomic operations and bounded scope; do not silently broaden a migration when conflicts are found.
+- Where relevant, validate content identity (for example, cryptographic hashes), filesystem identity/metadata, and compatibility references rather than relying on filenames alone.
+- A detected conflict, duplicate, unexpected state, or failed precondition is a stop condition—not permission to guess or overwrite.
+
+### Failure behavior
+
+- Stop before the next mutating operation when a precondition fails.
+- Isolate the affected operation and preserve diagnostic evidence without exposing secrets or private operational data.
+- Roll back only when the rollback procedure is defined and its effects are understood; never treat deletion as a generic recovery mechanism.
+- If rollback cannot be verified, retain an explicit INCOMPLETE / RECOVERY REQUIRED state and require human review.
+- Do not report a migration as complete merely because an operation returned success; verify the resulting state independently.
+
+### State accounting
+
+Every change record should distinguish:
+
+| State | Meaning |
+|---|---|
+| KNOWN-GOOD | Last state with sufficient evidence of correct operation |
+| CURRENT | Observed state before the proposed change |
+| TARGET | Explicit intended state |
+| TRANSITION | Change is in progress; completion is not yet established |
+| RECOVERY | Rollback or containment is in progress or required |
+| VERIFIED | Post-change checks passed against declared success criteria |
+
+The state record should identify the operation scope, preconditions, verification method, stop condition, recovery outcome, and unresolved items. Do not include private filesystem paths, host identifiers, credentials, raw logs, or other operational secrets in public evidence.
+
+### Maturity and evidence boundary
+
+This is a DESIGN-level process contract. Recent use of parts of this sequence in private engineering work is not evidence of a reusable automated migration subsystem, nor does it establish that every operation completed successfully. Any future implementation or measured reliability claim requires its own linked evidence record under the repository's [Evidence Model](../evidence/EVIDENCE_MODEL.md) and [Traceability](../TRACEABILITY.md) rules.
