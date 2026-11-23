@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sovereign-engineering-platform/schemas/evidence.schema.json",
+  "title": "Evidence",
+  "description": "DESIGN-level schema. Represents an Evidence record per architecture/evidence/EVIDENCE_MODEL.md. The evidence/ directory must remain empty of fabricated results; this schema defines the structure for future real evidence artifacts.",
+  "type": "object",
+  "required": ["evidenceId", "claim", "maturity", "method", "producedBy", "timestamp"],
+  "properties": {
+    "evidenceId": {
+      "type": "string",
+      "description": "Unique identifier for this evidence record."
+    },
+    "claim": {
+      "type": "string",
+      "description": "The specific claim this evidence supports or refutes."
+    },
+    "maturity": {
+      "type": "string",
+      "enum": ["CONCEPT", "HYPOTHESIS", "DESIGN", "IMPLEMENTATION", "EXPERIMENT", "MEASURED", "VERIFIED"],
+      "description": "Maturity Status this evidence substantiates, per architecture/evidence/EVIDENCE_MODEL.md."
+    },
+    "method": {
+      "type": "string",
+      "description": "Description of how the evidence was produced (test procedure, measurement method, review process)."
+    },
+    "result": {
+      "type": "object",
+      "description": "Outcome data. No fabricated or placeholder values permitted; omit until real results exist.",
+      "additionalProperties": true
+    },
+    "producedBy": {
+      "type": "string",
+      "description": "Identifier of the actor, test harness, or process that produced this evidence."
+    },
+    "relatedArtifacts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Repository-relative links to related requirement, design, implementation, or test artifacts."
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "provenance": { "$ref": "policy.schema.json#/definitions/provenance" }
+  }
+}

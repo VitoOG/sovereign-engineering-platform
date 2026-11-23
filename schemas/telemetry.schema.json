@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sovereign-engineering-platform/schemas/telemetry.schema.json",
+  "title": "Telemetry",
+  "description": "DESIGN-level schema. Generic envelope for all telemetry classes defined in architecture/cps/CPS_CONTROL_LOOP.md. No concrete producer implementation exists yet.",
+  "type": "object",
+  "required": ["telemetryId", "telemetryClass", "sourceStage", "timestamp", "payload"],
+  "properties": {
+    "telemetryId": {
+      "type": "string",
+      "description": "Unique identifier for this telemetry record."
+    },
+    "telemetryClass": {
+      "type": "string",
+      "enum": [
+        "SENSOR",
+        "ACQUISITION",
+        "VALIDATION",
+        "STATE",
+        "CONTROL",
+        "ACTUATOR_COMMAND",
+        "ACTUATOR_FEEDBACK",
+        "SYSTEM_SERVICE",
+        "SECURITY",
+        "AI_AGENT"
+      ],
+      "description": "Maps to the telemetry taxonomy in CPS_CONTROL_LOOP.md."
+    },
+    "sourceStage": {
+      "type": "string",
+      "description": "The producing layer or component (e.g., L1-DeterministicControl)."
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "payload": {
+      "type": "object",
+      "description": "Class-specific data. No physical thresholds or units are prescribed here; defined per deployment.",
+      "additionalProperties": true
+    },
+    "provenance": { "$ref": "policy.schema.json#/definitions/provenance" }
+  }
+}
