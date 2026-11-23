@@ -107,6 +107,7 @@ Allowed Maturity Status values:
 - Threat model: [architecture/security/THREAT_MODEL.md](architecture/security/THREAT_MODEL.md)
 - Evidence model: [architecture/evidence/EVIDENCE_MODEL.md](architecture/evidence/EVIDENCE_MODEL.md)
 - Traceability: [architecture/TRACEABILITY.md](architecture/TRACEABILITY.md)
+- Imported project candidate register: [docs/PROJECT_CANDIDATE_REGISTER.md](docs/PROJECT_CANDIDATE_REGISTER.md)
 - Systems manifesto: [SYSTEMS_ENGINEERING_MANIFESTO.md](SYSTEMS_ENGINEERING_MANIFESTO.md)
 - Civilizational model: [CIVILIZATIONAL_SYSTEM_MODEL.md](CIVILIZATIONAL_SYSTEM_MODEL.md)
 - Competency matrix: [COMPETENCY_EVIDENCE_MATRIX.md](COMPETENCY_EVIDENCE_MATRIX.md)
