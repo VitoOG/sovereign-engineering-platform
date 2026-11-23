@@ -4,7 +4,7 @@ Engineering systems that operate in the real world.
 
 This repository is an engineering architecture and evidence framework for cyber-physical systems, sovereign infrastructure, deterministic control, local AI, observability, and engineering evolution. It is a specification and evidence structure, not a deployed product, and not a marketing portfolio.
 
-## Viktors Simonenko
+## Viktors Simonenko "SIA Golden Greens Crop"
 
  Systems Architect | Integrator | Engineering
 
