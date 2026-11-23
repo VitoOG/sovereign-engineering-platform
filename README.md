@@ -2,7 +2,7 @@
 
 Engineering systems that operate in the real world.
 
-This repository is an engineering architecture and evidence framework for cyber-physical systems, sovereign infrastructure, deterministic control, local AI, observability, and engineering evolution. It is a specification and evidence structure, not a deployed product, and not a marketing portfolio.
+This repository is the public engineering architecture and evidence framework for cyber-physical systems, sovereign infrastructure, deterministic control, local AI, observability, reliability, and engineering evolution. It is not itself a deployed product or a marketing portfolio. Some related engineering components are developed and maintained in private environments; their existence does not make them public, independently reproducible, or runtime-verified.
 
 ## Positioning
 
@@ -64,19 +64,19 @@ See [architecture/evidence/EVIDENCE_MODEL.md](architecture/evidence/EVIDENCE_MOD
 1. Who is Viktors Simonenko?
 	Systems architect focused on integrating physical and digital engineering domains.
 2. What systems are engineered?
-	Cyber-physical, edge, infrastructure, observability, security, and intelligence-enabled systems — currently at CONCEPT/DESIGN maturity.
+	Cyber-physical, edge, infrastructure, observability, security, and intelligence-enabled systems — with maturity classified per component; public repository artifacts are primarily CONCEPT/DESIGN.
 3. What is the architectural philosophy?
 	Deterministic control with evidence-driven evolution under explicit constraints.
 4. What is ERICAOS?
-	Flagship architecture for a cyber-physical engineering runtime, currently CONCEPT with no implementation artifacts in this repository: see [projects/ericaos/README.md](projects/ericaos/README.md).
+	Flagship architecture for a local-first cyber-physical engineering runtime with mixed component maturity, including components labeled IMPLEMENTED — PRIVATE; see [projects/ericaos/README.md](projects/ericaos/README.md).
 5. What is the CPS model?
 	Physical-world control loop with multi-stage telemetry emission and a closed feedback path: see [architecture/cps/CPS_CONTROL_LOOP.md](architecture/cps/CPS_CONTROL_LOOP.md).
 6. What is the engineering evidence model?
 	A strict epistemic hierarchy from idea to validated result: see [architecture/evidence/EVIDENCE_MODEL.md](architecture/evidence/EVIDENCE_MODEL.md).
 7. What systems have been implemented?
-	None. This repository currently contains architecture, contracts, schemas, and case structures at CONCEPT/DESIGN maturity; no code or hardware implementation artifacts exist yet.
+	No implementation is claimed as publicly reproducible in this repository. Related private implementations are documented only where their evidence basis and verification limits are explicitly stated.
 8. What can be independently verified?
-	Nothing yet. Only artifacts explicitly marked VERIFIED with a linked evidence record would qualify; none currently exist.
+	No public implementation is currently claimed as independently reproducible. Public architecture and documentation can be inspected; private implementation claims remain bounded by their stated evidence level and are not PUBLIC-VERIFIED.
 9. What remains experimental or unresolved?
 	Items marked HYPOTHESIS, DESIGN, or `[UNRESOLVED_SPEC: Requires Hardware/Code Verification]` throughout architecture/ and case-studies/.
 10. How does this architecture evolve?
