@@ -127,6 +127,28 @@ A candidate receives a dedicated `projects/*` page only when its ownership, purp
 - A file count, static symbol count, README assertion, or historical disposition never qualifies a runtime as VERIFIED.
 - Public implementation claims require sanitized artifacts and reproducible instructions in this repository.
 
-## F. Provenance
+## F. Additional manifesto-domain profiles
+
+The November 2026 manifesto describes nine connected domains. The following profiles preserve work that is not represented by the original imported 23-candidate source list. They are added as bounded profiles, not promoted to verified products.
+
+| Profile | Classification | Evidence boundary | SEP record |
+|---|---|---|---|
+| ERICA Model Routing / Specialist Runtime | ERICA OS subsystem | Historical task-to-model routing and runtime observations; canonical current routing remains unresolved | [AI Model Routing](../projects/ai-model-routing/README.md) |
+| Offline Knowledge Archive | Digital preservation project | Candidate collections and acquisition plan; complete acquisition and disconnected access not verified | [Offline Knowledge Archive](../projects/offline-knowledge-archive/README.md) |
+| Security Engineering / DevSecOps / IT-OT | Cross-cutting engineering capability | Separate hardening, architecture, and authorized research workstreams; no unified security product | [Security Engineering](../projects/security-engineering/README.md) |
+| Experimental Game and Agent Engineering | Research direction | Manifesto-level research scope; executable environment and benchmark not verified | [Experimental Agent Lab](../projects/experimental-agent-lab/README.md) |
+| Alpine Edge Node | Private infrastructure asset | Historical Raspberry Pi / Alpine host and selected services; current runtime and public reproducibility not asserted | [Alpine Edge Node](../projects/alpine-edge-node/README.md) |
+
+### Additional named components retained under parent ownership
+
+- **CoreAgent / Jarvis / Hermes / supervisor concepts:** AI runtime, coding-agent, and orchestration lineage. These names are not automatically separate products; reconcile repository identity, implementation generation, and task authority before creating standalone profiles.
+- **CANON task routing:** intended task-to-model selection contract. Configuration and historical aliases do not prove current route execution.
+- **Knowledge Forge:** downstream consolidation capability within the ERICA knowledge pipeline; separate implementation and ownership remain unresolved.
+- **Shredder:** extraction subsystem within ERICA Library; its specifications and bounded implementation slices must not be counted as independent platforms.
+- **Ultima / Elite / assembly-language research:** source/game research context for the experimental agent domain. Do not claim a completed emulator, game, agent arena, or benchmark without source and run evidence.
+- **Funding Map / INFOFORGE / Information Gravity:** retain as historical research/design candidates with their dispositions above; do not silently promote them to active products.
+- **Independent R&D / engineering business:** organisational and commercialisation domain represented by Golden Greens Crop and the engineering-services positioning, not a separate software product.
+
+## G. Provenance
 
 This register is a reconciliation of the 2026-11-13 historical inventory, not a fresh scan of every private source tree. All source roots, commits, licenses, duplicate copies, and runtime states must be re-inspected before implementation, migration, publication of source, or status upgrade.
