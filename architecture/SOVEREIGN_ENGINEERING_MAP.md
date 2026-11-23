@@ -66,11 +66,11 @@ flowchart TB
     end
 
     subgraph L1[L1 - EMBEDDED / DETERMINISTIC CONTROL]
-        MCU[ATmega4809 firmware\nCONCEPT/DESIGN - source not located]
+        MCU[ATmega4809 firmware\nIMPLEMENTED - PRIVATE / FILE-VERIFIED]
     end
 
     subgraph L0[L0 - PHYSICAL]
-        CEA[Golden Greens Crop CEA + Aquaponics\nCONCEPT/R&D - self-reported]
+        CEA[CEA biological / agronomic outcomes\nHYPOTHESIS - unmeasured]
     end
 
     subgraph ARM64[PORTABLE ARM64 ENGINEERING NODE - cross-cutting]
@@ -81,12 +81,13 @@ flowchart TB
         SECTOOL[Security: nuclei, ffuf, slither]
     end
 
-    CEA --> MCU --> PI
-    PI --> BRIDGE
+    CEA -.->|physical integration / HIL unverified| MCU
+    MCU -.->|serial integration not runtime-verified| BRIDGE
+    PI -.->|bridge host / service runtime unverified| BRIDGE
     PI --> MESH
     PI --> AI
     AI --> AUTH
-    AUTH -->|validated only| MCU
+    AUTH -.->|target path; enforcement not implemented| MCU
     PI --> KB --> RAG --> AGENT --> EVO
     EVO -.->|policy-gated, not implemented| AUTH
 
@@ -105,6 +106,8 @@ Legend (visual semantics used above):
 - `[IMPLEMENTED - file-verified]`: this assistant opened and read the actual artifact.
 - `[DESIGN]`: a specification exists; no working implementation was found.
 - `[CONCEPT / self-reported]`: described only in narrative text; no artifact was inspected.
+
+Maturity boundary: file-verified private firmware and controller code do not establish end-to-end serial integration, hardware-in-the-loop behavior, commissioning, or biological/agronomic performance. Those remain unverified or unmeasured in [CASE-003](../case-studies/CASE-003/README.md) and [CASE-005](../case-studies/CASE-005/README.md).
 
 ## AI Authority Boundary (referenced, not redefined)
 
